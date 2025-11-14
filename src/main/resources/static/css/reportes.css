@@ -1,0 +1,43 @@
+body {
+  font-family: Arial, sans-serif;
+  background: url('../images/ALFA.png');
+  background-size: cover;
+  margin: 0;
+  padding: 0;
+}
+
+.container {
+  max-width: 800px;
+  margin: 30px auto;
+  padding: 20px;
+  background-color: rgba(255, 255, 255, 0.9);
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+h1 {
+  text-align: center;
+  font-size: 24px;
+  margin-bottom: 20px;
+}
+
+
+.back-to-top {
+  text-align: center;
+  margin-top: 40px;
+  margin-bottom: 20px;
+}
+
+.btn-back {
+  display: inline-block;
+  padding: 10px 20px;
+  background-color: #2058cf;
+  color: white;
+  text-decoration: none;
+  border-radius: 5px;
+  margin-top: 20px; 
+}
+
+.btn-back:hover {
+  background-color: #3b7fd8;
+}

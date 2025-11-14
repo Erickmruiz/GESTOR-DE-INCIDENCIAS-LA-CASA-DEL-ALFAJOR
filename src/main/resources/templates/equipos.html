@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Gestión de Equipos</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" th:href="@{/css/equipos.css}">
+    <script th:src="@{/js/equipos.js}" defer></script>
+</head>
+<body>
+<div class="container mt-4">
+    <h1 class="mb-4">Gestión de Equipos</h1>
+
+    <!-- Botones de acción -->
+    <div class="d-flex justify-content-between mb-3">
+        <a th:href="@{/equipos/nuevo}" class="btn btn-success">Registrar Equipo</a>
+       
+    </div>
+
+    <!-- Buscador -->
+    <div class="input-group mb-3" style="max-width: 400px;">
+        <input type="text" id="busqueda" class="form-control" placeholder="Buscar equipo por nombre..." oninput="filtrarEquipos()">
+        <button class="btn btn-primary" onclick="filtrarEquipos()">Buscar</button>
+    </div>
+
+    <!-- Tabla -->
+    <table class="table table-bordered table-striped">
+        <thead class="table-light">
+            <tr>
+                <th>Nombre</th>
+                <th>Tipo</th>
+                <th>Ubicación</th>
+                <th>Acciones</th>
+            </tr>
+        </thead>
+        <tbody id="equipos-body">
+            <!-- Si no hay equipos -->
+            <tr th:if="${equipos == null or #lists.isEmpty(equipos)}">
+                <td colspan="4" class="text-center">No hay equipos registrados.</td>
+            </tr>
+
+            <!-- Listado de equipos -->
+            <tr th:each="equipo : ${equipos}">
+                <td th:text="${equipo.nombre} ?: 'N/A'"></td>
+                <td th:text="${equipo.tipo} ?: 'N/A'"></td>
+                <td th:text="${equipo.ubicacion} ?: 'N/A'"></td>
+                <td>
+                    <a th:href="@{|/equipos/editar/${equipo.id}|}" class="btn btn-sm btn-primary">Editar</a>
+
+                    <!-- Botón para mostrar el modal -->
+                    <button type="button" class="btn btn-sm btn-danger"
+                            data-bs-toggle="modal"
+                            th:attr="data-bs-target=|#eliminarModal_${equipo.id}|">
+                        Eliminar
+                    </button>
+
+                    <!-- Modal Bootstrap para confirmar eliminación -->
+                    <div class="modal fade" th:id="|eliminarModal_${equipo.id}|" tabindex="-1"
+                         aria-labelledby="eliminarModalLabel" aria-hidden="true">
+                        <div class="modal-dialog">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <h5 class="modal-title" id="eliminarModalLabel">Confirmar eliminación</h5>
+                                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Cerrar"></button>
+                                </div>
+                                <div class="modal-body">
+                                    ¿Seguro que deseas eliminar este equipo?
+                                </div>
+                                <div class="modal-footer">
+                                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
+                                    <a th:href="@{|/equipos/eliminar/${equipo.id}|}" class="btn btn-danger">Eliminar</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+
+    <!-- Botón volver -->
+    <a th:href="@{/}" class="btn btn-secondary mt-3">Volver al Inicio</a>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

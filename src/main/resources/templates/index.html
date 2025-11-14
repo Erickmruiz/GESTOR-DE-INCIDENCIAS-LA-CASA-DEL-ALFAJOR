@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="es" xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>La Casa del Alfajor - Dashboard</title>
+
+  <!-- Bootstrap CSS -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="/css/index.css">
+
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+</head>
+<body>
+  <div class="container-fluid">
+    <div class="row">
+      <!-- Sidebar -->
+      <aside class="col-md-3 sidebar bg-light p-3">
+        <div class="sidebar-header text-center mb-3">
+          <img th:src="@{/images/images.png}" alt="Logo de La Casa del Alfajor" class="logo img-fluid">
+        </div>
+        
+        <nav class="nav flex-column sidebar-nav">
+          <a href="#" class="nav-link active">
+            <img th:src="@{/images/casa.png}" alt="Inicio" class="icon-img">
+            Panel de inicio
+          </a>
+          <a th:href="@{/usuario}" class="nav-link">
+            <img th:src="@{/images/usuarios.png}" alt="Usuarios" class="icon-img">
+            Usuarios
+          </a>
+          <a th:href="@{/tecnicos}" class="nav-link">
+            <img th:src="@{/images/tec.jpeg}" alt="Técnicos" class="icon-img">
+            Técnicos
+          </a>
+          <a th:href="@{/incidencias}" class="nav-link">
+            <img th:src="@{/images/incidencias.png}" alt="Incidencias" class="icon-img">
+            Incidencias
+          </a>
+          <a th:href="@{/equipos}" class="nav-link">
+            <img th:src="@{/images/equipos.png}" alt="Equipos" class="icon-img">
+            Equipos
+          </a>
+        
+          <a th:href="@{/reportes}" class="nav-link">
+            <img th:src="@{/images/reportes.png}" alt="Reportes" class="icon-img">
+            Reportes
+          </a>
+          <a th:href="@{/logout}" class="nav-link">
+            <img th:src="@{/images/reportes.png}" alt="Salir" class="icon-img">
+            Salir
+          </a>
+        </nav>
+      </aside>
+
+      <!-- Main Content -->
+      <main class="col-md-9 main-content p-4">
+        <div class="content-container">
+          <div class="header mb-4">
+            <h1 class="main-title">La Casa del Alfajor</h1>
+            <h2 class="sub-title">Gestión de Incidencias</h2>
+          </div>
+
+          <!-- Alerta ejemplo -->
+          <div class="alert alert-info" role="alert">
+            Bienvenido al sistema de gestión.
+          </div>
+
+          <!-- Modal trigger -->
+          <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#infoModal">
+            Ver información
+          </button>
+
+          <!-- Modal -->
+          <div class="modal fade" id="infoModal" tabindex="-1" aria-labelledby="infoModalLabel" aria-hidden="true">
+            <div class="modal-dialog">
+              <div class="modal-content">
+                <div class="modal-header">
+                  <h5 class="modal-title" id="infoModalLabel">Información</h5>
+                  <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Cerrar"></button>
+                </div>
+                <div class="modal-body">
+                  Aquí puedes ver estadísticas o noticias relevantes del sistema.
+                </div>
+                <div class="modal-footer">
+                  <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </main>
+    </div>
+  </div>
+
+  <!-- Bootstrap JS -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

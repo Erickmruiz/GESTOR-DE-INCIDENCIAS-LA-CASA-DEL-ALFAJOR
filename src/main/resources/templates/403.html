@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="es" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Acceso Denegado</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+</head>
+<body>
+<div class="container d-flex flex-column justify-content-center align-items-center" style="min-height: 100vh;">
+    <div class="card shadow-lg p-4" style="max-width: 420px;">
+        <div class="text-center mb-3">
+            <img src="/images/lock.jpg" alt="Acceso Denegado" style="width: 64px;">
+        </div>
+        <div class="alert alert-danger text-center" role="alert">
+            <h4 class="alert-heading">Acceso solo para administradores</h4>
+            <p>Esta sección es exclusiva para usuarios con perfil <strong>ADMINISTRADOR</strong>.</p>
+            <hr>
+            <p class="mb-0">Si necesitas acceso, contacta al administrador del sistema.</p>
+        </div>
+        <div class="d-grid gap-2 mt-3">
+            <a href="/" class="btn btn-primary">Volver al inicio</a>
+        </div>
+    </div>
+</div>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
