@@ -1,36 +1,32 @@
 # ======================
-# FASE 1: COMPILACIÓN
+# FASE 1: BUILD
 # ======================
 FROM maven:3.9.6-eclipse-temurin-17 AS build
 
-# Crear carpeta de trabajo
 WORKDIR /app
 
-# Copiar todo el repositorio
+# Copiar todo el proyecto
 COPY . .
 
-# Entrar a la carpeta donde está el pom.xml
-WORKDIR /app/demo
-
-# Compilar el proyecto (genera demo-0.0.1-SNAPSHOT.jar)
+# Compilar el proyecto usando el pom.xml de la raíz
 RUN mvn clean package -DskipTests
 
 
 # ======================
-# FASE 2: EJECUCIÓN
+# FASE 2: RUN
 # ======================
 FROM eclipse-temurin:17-jdk
 
-# Carpeta de trabajo
 WORKDIR /app
 
-# Copiar el JAR generado desde la fase anterior
-COPY --from=build /app/demo/target/demo-0.0.1-SNAPSHOT.jar app.jar
+# Copiar el JAR generado
+COPY --from=build /app/target/*.jar app.jar
 
-# Puerto dinámico que usa Railway
+# Puerto de Railway
 ENV PORT=8080
-
 EXPOSE 8080
 
-# Comando de arranque
+# Arranque
 CMD ["java", "-jar", "app.jar"]
+
+
